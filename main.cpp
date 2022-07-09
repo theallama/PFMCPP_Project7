@@ -55,13 +55,7 @@ it's very easy to mess this task up.
     check each source file for things being included that aren't used.
  */
 
-#include "Item.h"
-#include "Character.h"
-#include "Dwarf.h"
-#include "Paladin.h"
-#include "Dragon.h"
-#include "DragonSlayer.h"
-//==========================================================
+
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -75,7 +69,14 @@ it's very easy to mess this task up.
 
  Wait for my code review.
  */
-//==========================================================
+
+#include "Item.h"
+#include "Character.h"
+#include "Dwarf.h"
+#include "Paladin.h"
+#include "Dragon.h"
+#include "DragonSlayer.h"
+
 int main()
 {
                       //name, hit points, armor. 
@@ -267,7 +268,7 @@ Virgil the Dragon Slayer defeated Maldin the Dwarf and leveled up!
 
 end of battle stats:
 Maldin the Dwarf's stats: 
-    hitPoints: 0
+    hitPuseDefensiveItemoints: 0
     armor: 0
     attack damage: 4
     is defending: false

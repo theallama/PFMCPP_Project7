@@ -4,6 +4,7 @@
 
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
+#include "Utility.h"
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
     hitPoints(hp),
@@ -11,8 +12,8 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     attackDamage(attackDamage_)
 {
     initialHitPoints.reset( new int(hitPoints) );
-    initialArmorLevel.reset( new int( armor) );
-    initialAttackDamage.reset( new int( attackDamage) );
+    initialArmorLevel.reset( new int(armor) );
+    initialAttackDamage.reset( new int(attackDamage) );
 }
 
 void Character::attack( Character& other )
@@ -27,7 +28,7 @@ void Character::attack( Character& other )
     isDefending = false;
     std::cout << getName() << " has attacked " << other.getName() << std::endl;
     
-    if( other.takeDamage(attackDamage) <= 0 ) 
+    if( other.takeDamage(attackDamage) <= 0 )
     {
         //if you kill other, you get a boost in hit points and armor.
         attackInternal(other);
@@ -86,32 +87,44 @@ int Character::takeDamage(int damage)
     return hitPoints;
 }
 
-
-#include <cassert>
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
     {
         /*
-        When you defeat another Character: 
+        When you defeat another Character:
             a) your stats are restored to their initial value if they are lower than it.
             b) your stats are boosted 10%
             c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
       */
-        assert(false);
-        std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
+        std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;
+        defeatOpponent(*initialHitPoints, hitPoints);
+        defeatOpponent(*initialArmorLevel, armor);
+        defeatOpponent(*initialAttackDamage, attackDamage);
     }
+}
+
+void Character::defeatOpponent(int& initialValue, int& currentValue)
+{
+    if( currentValue < initialValue )
+    {
+        currentValue = initialValue;
+    }
+    currentValue *= 1.1f;
+    initialValue = currentValue;
 }
 
 void Character::printStats()
 {
     std::cout << getName() << "'s stats: " << std::endl;
-    assert(false);
+   // assert(false);
     /*
     make your getStats() use a function from the Utility.h
     */
-    std::cout << getStats(); 
+    
+    std::cout << getStats();
     
     std::cout << std::endl;
     std::cout << std::endl;
 }
+
