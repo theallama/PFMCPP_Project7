@@ -1,4 +1,5 @@
 #include "Utility.h"
+
 #include "Dwarf.h"
 #include "Paladin.h"
 #include "DragonSlayer.h"

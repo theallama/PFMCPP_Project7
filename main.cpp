@@ -268,7 +268,7 @@ Virgil the Dragon Slayer defeated Maldin the Dwarf and leveled up!
 
 end of battle stats:
 Maldin the Dwarf's stats: 
-    hitPuseDefensiveItemoints: 0
+    hitPoints: 0
     armor: 0
     attack damage: 4
     is defending: false
